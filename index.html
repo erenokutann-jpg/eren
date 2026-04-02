@@ -88,13 +88,23 @@
 <script>
     let hamle = 0;
     let butonBoyutu = 1;
+    let onaylandi = false; // Instagram yönlendirmesi için kontrol
 
     function evet() {
-        document.getElementById('question').innerHTML = "Harika karar! O zaman haberleşiyoruz, biralar benden 🍺✨";
-        document.getElementById('anaGorsel').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJtYm96Znd4ZzR6bm96bm96bm96bm96bm96JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/E3L5goMMSoAAo/giphy.gif";
-        document.getElementById('noBtn').style.display = 'none';
-        document.getElementById('yesBtn').style.transform = "scale(1.1)";
-        document.getElementById('yesBtn').innerHTML = "Anlaştık! 👋";
+        if (!onaylandi) {
+            // İlk tıklamada her şeyi değiştir
+            document.getElementById('question').innerHTML = "Harika karar! O zaman haberleşiyoruz, biralar benden 🍺✨";
+            document.getElementById('anaGorsel').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJtYm96Znd4ZzR6bm96bm96bm96bm96bm96JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/E3L5goMMSoAAo/giphy.gif";
+            document.getElementById('noBtn').style.display = 'none';
+            document.getElementById('yesBtn').style.transform = "scale(1.1)";
+            document.getElementById('yesBtn').innerHTML = "Bana Instagram'dan yaz! 👋";
+            onaylandi = true;
+        } else {
+            // İkinci tıklamada Instagram'ı aç
+            // BURAYA KENDİ KULLANICI ADINI YAZ (Örn: erenokutan)
+            const instagramKullaniciAdi = "eren_okutan"; 
+            window.location.href = "https://ig.me/m/" + instagramKullaniciAdi;
+        }
     }
 
     function hayirBasildi() {
@@ -108,18 +118,15 @@
 
         if (hamle === 1) {
             baslik.innerHTML = "Sadece birkaç bira ?????";
-            // Bilgisayarındaki 1. görsel
             resim.src = "number1.gif";
         } 
         else if (hamle === 2) {
             baslik.innerHTML = "Çok eğlenceli olur bence  ???????";
-            // Bilgisayarındaki 2. görsel
             resim.src = "number2.gif";
         }
         else if (hamle >= 3) {
             document.getElementById('noBtn').style.display = 'none';
-            baslik.innerHTML = "Bence bu bir işaret, buralarda sadece 'Evet' kalmış... Hadi gel içelim!";
-            // Final görseli (İstersen bunu da number3.gif yapabilirsin)
+            baslik.innerHTML = "Bence bu bir işaret, Hadi gel içelim!";
             resim.src = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2Y5eWdtMXN1MjN6ZW5hcmVvbTNrZXNxYzNoZDg5dGJkNHBvaGZxayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ztw0p2RGR36E0/giphy.gif";
             evetButon.style.transform = "scale(" + (butonBoyutu + 0.3) + ")";
         }
