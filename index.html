@@ -86,6 +86,15 @@
 </div>
 
 <script>
+    // GÖRSELLERİ ÖNCEDEN YÜKLEME (PRELOAD)
+    const gifListesi = ["number1.gif", "number2.gif",
+                        "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJtYm96Znd4ZzR6bm96bm96bm96bm96bm96JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/E3L5goMMSoAAo/giphy.gif",
+                        "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2Y5eWdtMXN1MjN6ZW5hcmVvbTNrZXNxYzNoZDg5dGJkNHBvaGZxayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ztw0p2RGR36E0/giphy.gif"];
+
+    gifListesi.forEach(gif => {
+        const img = new Image();
+        img.src = gif;
+    });
     let hamle = 0;
     let butonBoyutu = 1;
     let onaylandi = false; // Instagram yönlendirmesi için kontrol
